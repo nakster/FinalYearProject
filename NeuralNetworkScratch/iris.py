@@ -11,8 +11,14 @@ import seaborn as sns  # handles data visualisation
 # load Iris Flower dataset
 IrisData = pd.read_csv('https://raw.githubusercontent.com/uiuc-cse/data-fa14/gh-pages/data/iris.csv')
 # display the first 20 values in the dataset
-print(IrisData.head(20))
+print(IrisData.head(200))
 
 # Normalize the data
 df_norm = IrisData[['sepal_length', 'sepal_width', 'petal_length', 'petal_width']].apply(lambda x: (x - x.min()) / (x.max() - x.min()))
 print(df_norm.sample(n=5))
+
+# Convert the names of the species setosa','versicolor','virginica to numerical values 
+# so it can be easily used for the neural network 
+target = IrisData[['species']].replace(['setosa','versicolor','virginica'],[0,1,2])
+print(target.sample(n=5))
+
