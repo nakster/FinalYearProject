@@ -11,7 +11,7 @@ import seaborn as sns  # handles data visualisation
 # load Iris Flower dataset
 IrisData = pd.read_csv('https://raw.githubusercontent.com/uiuc-cse/data-fa14/gh-pages/data/iris.csv')
 # display the first 20 values in the dataset
-print(IrisData.head(200))
+print(IrisData.head(20))
 
 # Normalize the data
 data_norm = IrisData[['sepal_length', 'sepal_width', 'petal_length', 'petal_width']].apply(lambda x: (x - x.min()) / (x.max() - x.min()))
@@ -26,3 +26,18 @@ print(target.sample(n=5))
 # add the normalised data and the species that are represented by a number now 
 data = pd.concat([data_norm, target], axis=1)
 print(data.head(5))
+
+# for testing the neural network we going to seperate some 
+train_Test = 90/100.0
+data['train'] = np.random.rand(len(data)) < train_Test
+
+#from the data seperate the training and testing data
+train = data[data.train == 1]
+train = train.drop('train', axis=1).sample(frac=1)
+
+#seperate test data
+test = data[data.train == 0]
+print(data[data.train == 0])
+test = test.drop('train', axis=1)
+
+
