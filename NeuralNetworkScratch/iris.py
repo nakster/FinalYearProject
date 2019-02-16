@@ -14,11 +14,15 @@ IrisData = pd.read_csv('https://raw.githubusercontent.com/uiuc-cse/data-fa14/gh-
 print(IrisData.head(200))
 
 # Normalize the data
-df_norm = IrisData[['sepal_length', 'sepal_width', 'petal_length', 'petal_width']].apply(lambda x: (x - x.min()) / (x.max() - x.min()))
-print(df_norm.sample(n=5))
+data_norm = IrisData[['sepal_length', 'sepal_width', 'petal_length', 'petal_width']].apply(lambda x: (x - x.min()) / (x.max() - x.min()))
+print(data_norm.sample(n=5))
 
 # Convert the names of the species setosa','versicolor','virginica to numerical values 
 # so it can be easily used for the neural network 
 target = IrisData[['species']].replace(['setosa','versicolor','virginica'],[0,1,2])
 print(target.sample(n=5))
 
+#add the two datas to make one 
+# add the normalised data and the species that are represented by a number now 
+data = pd.concat([data_norm, target], axis=1)
+print(data.head(5))
