@@ -11,21 +11,21 @@ import seaborn as sns  # handles data visualisation
 # load Iris Flower dataset
 IrisData = pd.read_csv('https://raw.githubusercontent.com/uiuc-cse/data-fa14/gh-pages/data/iris.csv')
 # display the first 20 values in the dataset
-print(IrisData.head(20))
+# print(IrisData.head(20))
 
 # Normalize the data
 data_norm = IrisData[['sepal_length', 'sepal_width', 'petal_length', 'petal_width']].apply(lambda x: (x - x.min()) / (x.max() - x.min()))
-print(data_norm.sample(n=5))
+# print(data_norm.sample(n=5))
 
 # Convert the names of the species setosa','versicolor','virginica to numerical values 
 # so it can be easily used for the neural network 
 target = IrisData[['species']].replace(['setosa','versicolor','virginica'],[0,1,2])
-print(target.sample(n=5))
+# print(target.sample(n=5))
 
 #add the two datas to make one 
 # add the normalised data and the species that are represented by a number now 
 data = pd.concat([data_norm, target], axis=1)
-print(data.head(5))
+# print(data.head(5))
 
 # for testing the neural network we going to seperate some 
 train_Test = 90/100.0
@@ -47,6 +47,15 @@ y = np.array([targets[int(x)] for x in train.values[:,4:5]])
 # neural network
 # inputs is the sepal_length', 'sepal_width', 'petal_length', 'petal_width' of the flower type
 inputs = len(X[0])
+hiddenLayer = 5
+
+#"A random seed is a number used to initialize a pseudorandom number generator."
+np.random.seed(4)
+
+# weight 1 is the matrices of weight connecting the input and the hiddenLayer
+# input layer nodes connect with hidden layer nodes
+weight1 = 2*np.random.random((inputs, hiddenLayer)) - 1
+
 
 
 
