@@ -37,7 +37,13 @@ train = train.drop('train', axis=1).sample(frac=1)
 
 #seperate test data
 test = data[data.train == 0]
-print(data[data.train == 0])
 test = test.drop('train', axis=1)
+
+X = train.values[:,:4]
+targets = [[1,0,0],[0,1,0],[0,0,1]]
+y = np.array([targets[int(x)] for x in train.values[:,4:5]])
+
+
+
 
 
