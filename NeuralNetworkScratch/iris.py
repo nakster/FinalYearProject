@@ -46,7 +46,7 @@ y = np.array([targets[int(x)] for x in train.values[:,4:5]])
 #Create backpropagating
 # neural network
 # inputs is the sepal_length', 'sepal_width', 'petal_length', 'petal_width' of the flower type
-inputs = len(X[0])
+inputs = len(X[0]) # len is 4
 hiddenLayer = 5
 
 #"A random seed is a number used to initialize a pseudorandom number generator."
@@ -55,6 +55,13 @@ np.random.seed(4)
 # weight 1 is the matrices of weight connecting the input and the hiddenLayer
 # input layer nodes connect with hidden layer nodes
 weight1 = 2*np.random.random((inputs, hiddenLayer)) - 1
+
+# make a connection between hidden layer and output i.e weights 2 do that
+output = len(y[0]) # len is 3 
+weight2 = 2*np.random.random((hiddenLayer, output)) - 1
+
+
+
 
 
 
