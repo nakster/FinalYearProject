@@ -43,6 +43,11 @@ X = train.values[:,:4]
 targets = [[1,0,0],[0,1,0],[0,0,1]]
 y = np.array([targets[int(x)] for x in train.values[:,4:5]])
 
+#Create backpropagating
+# neural network
+# inputs is the sepal_length', 'sepal_width', 'petal_length', 'petal_width' of the flower type
+inputs = len(X[0])
+
 
 
 
