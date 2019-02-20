@@ -39,8 +39,14 @@ train = train.drop('train', axis=1).sample(frac=1)
 test = data[data.train == 0]
 test = test.drop('train', axis=1)
 
+# x is basically the trainig data without the id number and species column 
 X = train.values[:,:4]
 targets = [[1,0,0],[0,1,0],[0,0,1]]
+# y replaces the species position 
+# i.e if in the train data array if the specie is 1 which is setosa
+# then the y target is given that position
+# for example number 1 is setosa this means the target array would look like 
+# [1 0 0] so 1 represents the correct position of the species
 y = np.array([targets[int(x)] for x in train.values[:,4:5]])
 
 #Create backpropagating
@@ -67,15 +73,43 @@ learning_rate = 0.2
 for epoch in range(50000):
     #sigmoid activation function squashes the input values between 0 and 1. 
     #This provides a consistant way for the network to deal with outputs.
-    l1 = 1/(1 + np.exp(-(np.dot(X, weight1)))) # sigmoid function
-    l2 = 1/(1 + np.exp(-(np.dot(l1, weight2))))
-    er = (abs(y - l2)).mean()
-    l2_delta = (y - l2)*(l2 * (1-l2))
-    l1_delta = l2_delta.dot(weight2.T) * (l1 * (1-l1))
-    weight2 += l1.T.dot(l2_delta) * learning_rate
-    weight1 += X.T.dot(l1_delta) * learning_rate
+    layer1 = 1/(1 + np.exp(-(np.dot(X, weight1)))) # sigmoid function
+    layer2 = 1/(1 + np.exp(-(np.dot(layer1, weight2))))
+    er = (abs(y - layer2)).mean()
+    layer2_delta = (y - layer2)*(layer2 * (1-layer2))
+    layer1_delta = layer2_delta.dot(weight2.T) * (layer1 * (1-layer1))
+    weight2 += layer1.T.dot(layer2_delta) * learning_rate
+    weight1 += X.T.dot(layer1_delta) * learning_rate
 print('Error Rate for prediction is:', er)
 
+#testX is aarray without the id and the species column
+testX = test.values[:,:4]
+# testY replaces the species position 
+# i.e if in the train data array if the specie is 1 which is setosa
+# then the y target is given that position
+# for example number 1 is setosa this means the target array would look like 
+# [1 0 0] so 1 represents the correct position of the species
+testY = np.array([targets[int(x)] for x in test.values[:,4:5]])
 
 
+l1 = 1/(1 + np.exp(-(np.dot(testX, weight1))))
+l2 = 1/(1 + np.exp(-(np.dot(l1, weight2))))
+
+np.round(l2,3)
+
+
+yp = np.argmax(l2, axis=1) # prediction
+print("this is yp\n")
+print(yp)
+res = yp == np.argmax(testY, axis=1)
+correct = np.sum(res)/len(res)
+
+testres = test[['species']].replace([0,1,2], ['setosa','versicolor','virginica'])
+print(testres)
+
+testres['Prediction'] = yp
+testres['Prediction'] = testres['Prediction'].replace([0,1,2], ['setosa','versicolor','virginica'])
+
+print(testres)
+print('Correct:',sum(res),'/',len(res), ':', (correct*100),'%')
 
