@@ -60,10 +60,21 @@ weight1 = 2*np.random.random((inputs, hiddenLayer)) - 1
 output = len(y[0]) # len is 3 
 weight2 = 2*np.random.random((hiddenLayer, output)) - 1
 
+##### Train  the neural network
 
-
-
-
+# slowly update the network
+learning_rate = 0.2 
+for epoch in range(50000):
+    #sigmoid activation function squashes the input values between 0 and 1. 
+    #This provides a consistant way for the network to deal with outputs.
+    l1 = 1/(1 + np.exp(-(np.dot(X, weight1)))) # sigmoid function
+    l2 = 1/(1 + np.exp(-(np.dot(l1, weight2))))
+    er = (abs(y - l2)).mean()
+    l2_delta = (y - l2)*(l2 * (1-l2))
+    l1_delta = l2_delta.dot(weight2.T) * (l1 * (1-l1))
+    weight2 += l1.T.dot(l2_delta) * learning_rate
+    weight1 += X.T.dot(l1_delta) * learning_rate
+print('Error Rate for prediction is:', er)
 
 
 
