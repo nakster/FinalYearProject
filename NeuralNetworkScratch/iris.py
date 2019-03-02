@@ -7,6 +7,7 @@ import numpy as np # handles mathemathical operations
 import pandas as pd # handling data 
 import matplotlib.pyplot as plt# plotting graphs 
 import seaborn as sns  # handles data visualisation
+from sklearn import preprocessing
 
 # load Iris Flower dataset
 IrisData = pd.read_csv('https://raw.githubusercontent.com/uiuc-cse/data-fa14/gh-pages/data/iris.csv')
@@ -91,7 +92,6 @@ testX = test.values[:,:4]
 # [1 0 0] so 1 represents the correct position of the species
 testY = np.array([targets[int(x)] for x in test.values[:,4:5]])
 
-
 l1 = 1/(1 + np.exp(-(np.dot(testX, weight1))))
 l2 = 1/(1 + np.exp(-(np.dot(l1, weight2))))
 
@@ -99,8 +99,6 @@ np.round(l2,3)
 
 
 yp = np.argmax(l2, axis=1) # prediction
-print("this is yp\n")
-print(yp)
 res = yp == np.argmax(testY, axis=1)
 correct = np.sum(res)/len(res)
 
