@@ -18,10 +18,18 @@ def main():
 
     # read the data file
     # this is the path to the data training file
-    data = './Data/training.data'
-
+    dataPath = './Data/training.data'
     #test if the path is correct
     # print(data)
+
+    # os.path.isfile(path)
+    # Return True if path is an existing regular file. 
+    # This follows symbolic links, so both islink() and isfile() can be true for the same path.
+    # https://docs.python.org/2/library/os.path.html
+    if os.path.isfile(dataPath) and os.access(dataPath, os.R_OK):
+        print ('The data file exists!')
+    else:
+        print('There is no data file to train')
 
 #run the main method 
 main()
