@@ -1,7 +1,7 @@
 import os
 import os.path
-import cv2
 import matplotlib.pyplot as plt
+from API import KNN as classifier 
 
 def main():
     #we going to read in the image that is going to be tested 
@@ -12,14 +12,17 @@ def main():
     image = cv2.imread('./Images/' + userInput + '.jpg')
 
     # Plot the image that we are going to test on 
+    # https://matplotlib.org/api/_as_gen/matplotlib.pyplot.figure.html#matplotlib.pyplot.figure
     plt.figure("The Image to be Tested")
     plt.imshow(image) 
     plt.show()
 
+    # Variables
     # read the data file
     # this is the path to the data training file
     dataPath = './Data/training.data'
     testPath = './Data/test.data'
+    prediction = ''
 
     #test if the path is correct
     # print(data)
@@ -42,9 +45,10 @@ def main():
 
 
     # training the data 
+    prediction = classifier.main(dataPath, testPath)
 
     # print the prediction 
-    
+    print(prediction)
 
 #run the main method 
 main()
