@@ -56,6 +56,17 @@ def main(trainData, testData):
     # trainDataFeatureVector array and testDatFeatureVector array
     loadDataset(trainData, testData, trainDataFeatureVector, testDatFeatureVector)
 
+    ##this array will store the prediction
+    prediction = []
+    # with a given K value we can make boundaries of each class
+    # https://www.analyticsvidhya.com/blog/2018/03/introduction-k-neighbours-algorithm-clustering/
+    k = 7
+
+    
+    
+
+
+
     return 'Prediction!!!'
 
 
