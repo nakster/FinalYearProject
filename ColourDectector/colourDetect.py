@@ -1,5 +1,6 @@
 import os
 import os.path
+import cv2
 import matplotlib.pyplot as plt
 from API import KNN as classifier 
 
