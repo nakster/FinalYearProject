@@ -16,6 +16,12 @@ def main():
     plt.imshow(image) 
     plt.show()
 
+    # read the data file
+    # this is the path to the data training file
+    data = './Data/training.data'
+
+    #test if the path is correct
+    # print(data)
 
 #run the main method 
 main()
