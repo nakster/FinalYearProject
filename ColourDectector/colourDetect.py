@@ -19,6 +19,8 @@ def main():
     # read the data file
     # this is the path to the data training file
     dataPath = './Data/training.data'
+    testPath = './Data/test.data'
+
     #test if the path is correct
     # print(data)
 
@@ -27,9 +29,22 @@ def main():
     # This follows symbolic links, so both islink() and isfile() can be true for the same path.
     # https://docs.python.org/2/library/os.path.html
     if os.path.isfile(dataPath) and os.access(dataPath, os.R_OK):
-        print ('The data file exists!')
+        print ('The Data File Exists!')
     else:
-        print('There is no data file to train')
+        print('Data File Does Not Exist!')
+
+
+    #check if testing data exists
+    if os.path.isfile(dataPath) and os.access(dataPath, os.R_OK):
+        print ('The Test Data File Exists!')
+    else:
+        print('Test Data File Does Not Exist!')
+
+
+    # training the data 
+
+    # print the prediction 
+    
 
 #run the main method 
 main()
