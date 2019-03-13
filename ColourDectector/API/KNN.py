@@ -62,7 +62,15 @@ def main(trainData, testData):
     # https://www.analyticsvidhya.com/blog/2018/03/introduction-k-neighbours-algorithm-clustering/
     k = 7
 
-    
+    #run the for loop len(testDatFeatureVector) amount of times 
+    for i in range(len(testDatFeatureVector)):
+        # https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/
+        # Locate k most similar data instances.
+        
+        # getNeigbours 
+
+
+
     
 
 
