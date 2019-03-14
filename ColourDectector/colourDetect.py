@@ -10,6 +10,44 @@ import numpy as np
 import urllib
 
 def main():
+
+    #make a countinous while loop 
+    choice = True
+
+    #ask for 
+    while choice:
+        print("""
+        ----- Colour Detector Menu -----
+        1.Test A Image from Image Folder
+        2.Test a Image url(must be http and jpg)
+        3.Exit/Quit
+        """)
+        choice = input("What would you like to do? ")
+
+        if choice=="1":
+            print("choice 1")
+        elif choice=="3":
+            print("\n Goodbye") 
+            choice = None
+        else:
+            print("\n Not Valid Choice Try again")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     #we going to read in the image that is going to be tested 
     print("Enter image (saved as colors e.g. black)")
     userInput = input()
