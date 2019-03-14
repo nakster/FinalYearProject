@@ -69,7 +69,17 @@ def main():
 
         #this is to test the image from the url    
         elif choice=="2":
-            print("choice 2")
+
+            #we going to read in the url that is going to be tested 
+            print("Enter image URL")
+            url = input()
+            # send the url to the method which converts it
+            image = urlImage.urlImage(url)
+
+            #display the image with result
+            plt.imshow(image[..., ::-1]) 
+            plt.show()
+            
         # this is to exit the loop
         elif choice=="3":
             print("\n Goodbye") 
