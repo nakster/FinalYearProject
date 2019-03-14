@@ -3,6 +3,7 @@ import os.path
 import cv2
 import matplotlib.pyplot as plt
 from API import KNN as classifier 
+from API import prepareTestImage as prepare
 
 def main():
     #we going to read in the image that is going to be tested 
@@ -37,14 +38,10 @@ def main():
     else:
         print('Data File Does Not Exist!')
 
-
-    #check if testing data exists
-    if os.path.isfile(dataPath) and os.access(dataPath, os.R_OK):
-        print ('The Test Data File Exists!')
-    else:
-        print('Test Data File Does Not Exist!')
-
-
+    # this here is prepares the image to be tested 
+    # changes the test.data file to the rgb values of the image that is going to be tested 
+    prepare.prepareImage(image)
+   
     # training the data 
     prediction = classifier.main(dataPath, testPath)
 
