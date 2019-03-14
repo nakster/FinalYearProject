@@ -94,6 +94,36 @@ def getNeighbors(trainDataFeatureVector, testInstance, k):
         neighbors.append(distances[x][0])
     return neighbors
 
+# response of neighbors 
+def response(neighbors):
+    # array to store all the possible neigbors 
+    allNeighbors = {}
+
+    # run the loop len of neighbors which is the class votes i.e red black blue ......
+    for x in range(len(neighbors)):
+        # response is equal to the last vlaue of each point
+        # [9.0, 0.0, 0.0, 'black']
+        # ie in the above case its black
+        response = neighbors[x][-1]
+
+        # this here checks for each response and counts them up
+        # for example red = 2 time and white = 4 times
+        # this means the input is more likely to be white 
+        if response in allNeighbors:
+            #counter
+            allNeighbors[response] += 1
+        else:
+            #counter
+            allNeighbors[response] = 1
+            
+    # this sorts the allNeighbors to have the 
+    # for exapmle red = 2 time and white = 4 times
+    # this makes sure that the bigger value is first
+    sortedVotes = sorted(allNeighbors.items(),key=operator.itemgetter(1), reverse=True)
+    #return the first value i.e name of colour 
+    return sortedVotes[0][0]
+
+
 def main(trainData, testData):
     # As we would need to in any machine learning problem,
     # We must first find a way to represent data points as feature vectors.
@@ -121,7 +151,7 @@ def main(trainData, testData):
        
         # getNeigbours 
         neighbors = getNeighbors(trainDataFeatureVector, testDatFeatureVector[i], k)
-
+        res = response(neighbors)
     
 
 
