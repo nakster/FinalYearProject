@@ -1,4 +1,6 @@
 import csv
+import math
+import operator
 
 # Load image feature data to training feature vectors and test feature vector
 def loadDataset(trainingFile,testFile,trainDataFeatureVector=[],testDatFeatureVector=[]):
@@ -43,15 +45,54 @@ def loadDataset(trainingFile,testFile,trainDataFeatureVector=[],testDatFeatureVe
             testDatFeatureVector.append(testSet[i])
 
 
+# similarity
 # In order to make predictions we need to 
 # calculate the similarity between any two given data instances.
 # If this distance is small, it will be the high degree of similarity
 #  where large distance will be the low degree of similarity.
+# The Euclidean distance between two points is the length of the 
+# path connecting them.The Pythagorean theorem gives this distance between two points.
 def euclideanDistance(instance1, instance2, length):
 	distance = 0
+    # measure the diference between the two points 
 	for x in range(length):
 		distance += pow((instance1[x] - instance2[x]), 2)
 	return math.sqrt(distance)
+
+
+# Neighbors
+# After getting the similarty method 
+# we can use it to get the K most similar instace for a 
+# gievn unseen instance
+def getNeighbors(trainDataFeatureVector, testInstance, k):
+    # here we will calculate the distance for
+    # All instances and select a subset 
+    # with the smallest distance values
+    distances = []
+
+    # the testInstance is [5.0, 5.0, 5.0]
+    # which has a lenth of 3 
+    length = len(testInstance) - 1
+    
+    #run the loop for the length of the trainging data 67 times
+    for x in range(len(trainDataFeatureVector)):
+
+        # get the distance of each point 
+        # ie [139.0, 0.0, 0.0, 'red'] which is trainDataFeatureVector[1]
+        dist = euclideanDistance(testInstance,trainDataFeatureVector[x], length)
+        # then append the distance to the trainDataFeatureVector array
+        distances.append((trainDataFeatureVector[x], dist))
+
+    # sort the array so we get the smallest distance value at the top
+    distances.sort(key=operator.itemgetter(1))
+    neighbors = []
+
+    ##this runs 7 times 
+    # it gets the first 7 sorted vales from the array distances 
+    # appends it to neighbors and returns it 
+    for x in range(k):
+        neighbors.append(distances[x][0])
+    return neighbors
 
 def main(trainData, testData):
     # As we would need to in any machine learning problem,
@@ -77,10 +118,9 @@ def main(trainData, testData):
     for i in range(len(testDatFeatureVector)):
         # https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/
         # Locate k most similar data instances.
-        
+       
         # getNeigbours 
-
-
+        neighbors = getNeighbors(trainDataFeatureVector, testDatFeatureVector[i], k)
 
     
 
