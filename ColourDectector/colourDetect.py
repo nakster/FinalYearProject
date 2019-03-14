@@ -4,14 +4,32 @@ import cv2
 import matplotlib.pyplot as plt
 from API import KNN as classifier 
 from API import prepareTestImage as prepare
+from PIL import Image
+# import the necessary packages
+import numpy as np
+import urllib
 
 def main():
     #we going to read in the image that is going to be tested 
     print("Enter image (saved as colors e.g. black)")
     userInput = input()
 
+
+
+    resp = urllib.request.urlopen(userInput)
+    image = np.asarray(bytearray(resp.read()), dtype="uint8")
+    image = cv2.imdecode(image, cv2.IMREAD_COLOR)
+
+    # response = requests.get(userInput)
+    # image = Image.open(BytesIO(response.content))
+
+    # image = Image.open(StringIO(urllib.requests.urlopen(userInput).read()))
     #this here reads the image in 
-    image = cv2.imread('./Images/' + userInput + '.jpg')
+    # image = cv2.imread('./Images/' + userInput + '.jpg')
+    # image = cv2.imread(img)
+    plt.imshow(image[..., ::-1]) 
+    plt.show()
+
 
     # Variables
     # read the data file
