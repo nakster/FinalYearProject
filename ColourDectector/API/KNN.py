@@ -151,12 +151,13 @@ def main(trainData, testData):
        
         # getNeigbours 
         neighbors = getNeighbors(trainDataFeatureVector, testDatFeatureVector[i], k)
+        # get response 
         res = response(neighbors)
-    
-
-
-
-    return 'Prediction!!!'
+        # append the response to prediction array
+        prediction.append(res)
+        
+    # return the prediction    
+    return prediction[0]
 
 
 	
