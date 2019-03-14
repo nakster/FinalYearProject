@@ -42,6 +42,17 @@ def loadDataset(trainingFile,testFile,trainDataFeatureVector=[],testDatFeatureVe
             # the seperated data is then added to the testDatFeatureVector array
             testDatFeatureVector.append(testSet[i])
 
+
+# In order to make predictions we need to 
+# calculate the similarity between any two given data instances.
+# If this distance is small, it will be the high degree of similarity
+#  where large distance will be the low degree of similarity.
+def euclideanDistance(instance1, instance2, length):
+	distance = 0
+	for x in range(length):
+		distance += pow((instance1[x] - instance2[x]), 2)
+	return math.sqrt(distance)
+
 def main(trainData, testData):
     # As we would need to in any machine learning problem,
     # We must first find a way to represent data points as feature vectors.
