@@ -13,14 +13,6 @@ def main():
     #this here reads the image in 
     image = cv2.imread('./Images/' + userInput + '.jpg')
 
-    # Plot the image that we are going to test on 
-    # https://matplotlib.org/api/_as_gen/matplotlib.pyplot.figure.html#matplotlib.pyplot.figure
-    plt.figure("The Image to be Tested")
-    # fixed color distortion error
-    # https://stackoverflow.com/questions/37795874/matplotlib-imshow-why-is-img-color-distorted    
-    plt.imshow(image[..., ::-1]) 
-    plt.show()
-
     # Variables
     # read the data file
     # this is the path to the data training file
@@ -48,7 +40,16 @@ def main():
     prediction = classifier.main(dataPath, testPath)
 
     # print the prediction 
-    print(prediction)
+    print('The KNN predicts the Image to be: ' + prediction)
+
+
+      # Plot the image that we are going to test on 
+    # https://matplotlib.org/api/_as_gen/matplotlib.pyplot.figure.html#matplotlib.pyplot.figure
+    plt.figure("The Image to be Tested " + prediction)
+    # fixed color distortion error
+    # https://stackoverflow.com/questions/37795874/matplotlib-imshow-why-is-img-color-distorted    
+    plt.imshow(image[..., ::-1]) 
+    plt.show()
 
 #run the main method 
 main()
