@@ -142,7 +142,7 @@ def main(trainData, testData):
     prediction = []
     # with a given K value we can make boundaries of each class
     # https://www.analyticsvidhya.com/blog/2018/03/introduction-k-neighbours-algorithm-clustering/
-    k = 7
+    k = 3
 
     #run the for loop len(testDatFeatureVector) amount of times 
     for i in range(len(testDatFeatureVector)):

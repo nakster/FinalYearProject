@@ -16,7 +16,9 @@ def main():
     # Plot the image that we are going to test on 
     # https://matplotlib.org/api/_as_gen/matplotlib.pyplot.figure.html#matplotlib.pyplot.figure
     plt.figure("The Image to be Tested")
-    plt.imshow(image) 
+    # fixed color distortion error
+    # https://stackoverflow.com/questions/37795874/matplotlib-imshow-why-is-img-color-distorted    
+    plt.imshow(image[..., ::-1]) 
     plt.show()
 
     # Variables
@@ -51,21 +53,7 @@ def main():
 #run the main method 
 main()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # links 
 # https://stackoverflow.com/questions/3388223/python-difference-between-os-access-and-os-path-exists
 # https://stackoverflow.com/questions/35286540/display-an-image-with-python
+# https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/
