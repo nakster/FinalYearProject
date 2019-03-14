@@ -4,10 +4,8 @@ import cv2
 import matplotlib.pyplot as plt
 from API import KNN as classifier 
 from API import prepareTestImage as prepare
-from PIL import Image
-# import the necessary packages
-import numpy as np
-import urllib
+
+
 
 def main():
 
@@ -24,8 +22,17 @@ def main():
         """)
         choice = input("What would you like to do? ")
 
+        #first choice is if we select a image from the image folder
         if choice=="1":
-            print("choice 1")
+
+            #we going to read in the image that is going to be tested 
+            print("Enter image (saved as colors e.g. black)")
+            userInput = input()
+
+        #this is to test the image from the url    
+        elif choice=="2":
+        
+        # this is to exit the loop
         elif choice=="3":
             print("\n Goodbye") 
             choice = None
@@ -33,30 +40,11 @@ def main():
             print("\n Not Valid Choice Try again")
 
 
+  
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-    #we going to read in the image that is going to be tested 
-    print("Enter image (saved as colors e.g. black)")
-    userInput = input()
-
-
-
-    resp = urllib.request.urlopen(userInput)
-    image = np.asarray(bytearray(resp.read()), dtype="uint8")
-    image = cv2.imdecode(image, cv2.IMREAD_COLOR)
+    
 
     # response = requests.get(userInput)
     # image = Image.open(BytesIO(response.content))
