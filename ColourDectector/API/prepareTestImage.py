@@ -19,7 +19,6 @@ def prepareImage(img):
         counter = counter + 1
         #calculate the rgb
         hist = cv2.calcHist([chan], [0], None, [256], [0, 256])
-        print(hist)
         features.extend(hist)
 
         # find the peak pixel values for R, G, and B
