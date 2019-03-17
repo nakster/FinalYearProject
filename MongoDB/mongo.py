@@ -1,9 +1,4 @@
 #first install pip install pymongo
-# import pymongo as mongo
-# import gridfs
-# import os
-
-
 from pymongo import MongoClient
 import gridfs
 import cv2
@@ -11,10 +6,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # access our image collection
-client = MongoClient('localhost', 27017)
-db = client['testDatabaseONE']
-testCollection = db['myImageCollection']
+# client = MongoClient('localhost', 27017)
 
+# The "dnspython" module must be installed to use mongodb+srv:// URIs
+client = MongoClient("mongodb+srv://root:root@cluster0-xyrvy.mongodb.net/test?retryWrites=true")
+db = client.MongoProject
+testCollection = db.myImageCollection
+
+print(testCollection)
 fs = gridfs.GridFS(db)
 
 
@@ -31,7 +30,7 @@ imageID = fs.put(imageString, encoding='utf-8')
 
 # create our image meta data
 meta = {
-    'name': 'myTestSet',
+    'name': 'yellow',
     'images': [
         {
             'imageID': imageID,
@@ -118,4 +117,5 @@ plt.show()
 
 
 
-
+### #####################################
+# https://stackoverflow.com/questions/53682647/mongodb-atlas-authentication-failed-on-python
