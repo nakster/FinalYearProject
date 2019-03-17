@@ -55,20 +55,24 @@ def showImage():
     userInput = input()
 
     # get the image meta data
-    image = testCollection.find_one({'name': userInput})['images'][0]
+    try:
+        image = testCollection.find_one({'name': userInput})['images'][0]
+         # get the image from gridfs
+        gOut = fs.get(image['imageID'])
 
-    # get the image from gridfs
-    gOut = fs.get(image['imageID'])
+        # convert bytes to ndarray
+        img = np.frombuffer(gOut.read(), dtype=np.uint8)
 
-    # convert bytes to ndarray
-    img = np.frombuffer(gOut.read(), dtype=np.uint8)
+        # reshape to match the image size
+        img = np.reshape(img, image['shape'])
 
-    # reshape to match the image size
-    img = np.reshape(img, image['shape'])
+        # display the image 
+        plt.imshow(img) 
+        plt.show()
+    except:
+        print("none")
 
-    # display the image 
-    plt.imshow(img) 
-    plt.show()
+   
 
 path = './Images/red2.jpg'
 # saveImageTocloud(path)
