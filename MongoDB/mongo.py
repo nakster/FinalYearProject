@@ -1,4 +1,5 @@
 #first install pip install pymongo
+#second install pip install dnspython
 from pymongo import MongoClient
 import gridfs
 import cv2
@@ -8,61 +9,73 @@ import matplotlib.pyplot as plt
 # access our image collection
 # client = MongoClient('localhost', 27017)
 
-
 # instiallise the connection
-def init():
-    # The "dnspython" module must be installed to use mongodb+srv:// URIs
-    client = MongoClient("mongodb+srv://root:root@cluster0-xyrvy.mongodb.net/test?retryWrites=true")
-    db = client.MongoProject
-    testCollection = db.myImageCollection
-
-
-
-print(testCollection)
+# The "dnspython" module must be installed to use mongodb+srv:// URIs
+client = MongoClient("mongodb+srv://root:root@cluster0-xyrvy.mongodb.net/test?retryWrites=true")
+db = client.MongoProject
+testCollection = db.myImageCollection
 fs = gridfs.GridFS(db)
 
 
-# # read the image and convert it to RGB
-image = cv2.imread('./yellow.jpg')
-image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+def saveImageTocloud(Imgpath):
+
+    print("What name would you like to save the image as: ")
+    userInput = input()
+
+    # # read the image and convert it to RGB
+    image = cv2.imread(Imgpath)
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
 
-# convert ndarray to string
-imageString = image.tostring()
+    # convert ndarray to string
+    imageString = image.tostring()
 
-# store the image
-imageID = fs.put(imageString, encoding='utf-8')
+    # store the image
+    imageID = fs.put(imageString, encoding='utf-8')
 
-# create our image meta data
-meta = {
-    'name': 'yellow',
-    'images': [
-        {
-            'imageID': imageID,
-            'shape': image.shape,
-            'dtype': str(image.dtype)
-        }
-    ]
-}
+    # create our image meta data
+    meta = {
+        'name': userInput,
+        'images': [
+            {
+                'imageID': imageID,
+                'shape': image.shape,
+                'dtype': str(image.dtype)
+            }
+        ]
+    }
 
-# insert the meta data
-testCollection.insert_one(meta)
+    # insert the meta data
+    testCollection.insert_one(meta)
+    
 
-# get the image meta data
-image = testCollection.find_one({'name': 'myTestSet'})['images'][0]
+def showImage():
 
-# get the image from gridfs
-gOut = fs.get(image['imageID'])
+    print("What Image would you like to search from database: ")
+    userInput = input()
 
-# convert bytes to ndarray
-img = np.frombuffer(gOut.read(), dtype=np.uint8)
+    # get the image meta data
+    image = testCollection.find_one({'name': userInput})['images'][0]
 
-# reshape to match the image size
-img = np.reshape(img, image['shape'])
+    # get the image from gridfs
+    gOut = fs.get(image['imageID'])
+
+    # convert bytes to ndarray
+    img = np.frombuffer(gOut.read(), dtype=np.uint8)
+
+    # reshape to match the image size
+    img = np.reshape(img, image['shape'])
+
+    # display the image 
+    plt.imshow(img) 
+    plt.show()
+
+path = './Images/red2.jpg'
+# saveImageTocloud(path)
+showImage()
 
 
-plt.imshow(img) 
-plt.show()
+
 
 
 
