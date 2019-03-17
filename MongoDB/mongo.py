@@ -8,10 +8,15 @@ import matplotlib.pyplot as plt
 # access our image collection
 # client = MongoClient('localhost', 27017)
 
-# The "dnspython" module must be installed to use mongodb+srv:// URIs
-client = MongoClient("mongodb+srv://root:root@cluster0-xyrvy.mongodb.net/test?retryWrites=true")
-db = client.MongoProject
-testCollection = db.myImageCollection
+
+# instiallise the connection
+def init():
+    # The "dnspython" module must be installed to use mongodb+srv:// URIs
+    client = MongoClient("mongodb+srv://root:root@cluster0-xyrvy.mongodb.net/test?retryWrites=true")
+    db = client.MongoProject
+    testCollection = db.myImageCollection
+
+
 
 print(testCollection)
 fs = gridfs.GridFS(db)
