@@ -7,8 +7,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 from tkinter import filedialog
 from tkinter import *
-# from tkinter.filedialog import askopenfilename
-
+from API import urlImage
+import os
+# from .ColourDetectector.API import urlImage
 # access our image collection
 # client = MongoClient('localhost', 27017)
 
@@ -22,11 +23,23 @@ fs = gridfs.GridFS(db)
 
 def saveImageTocloud():
 
+    #https://stackoverflow.com/questions/39261178/how-can-tkinter-open-with-file-directory-of-specific-folder-also-containing-py
     root = Tk()
-    # root.filename =  filedialog.askopenfilename(initialdir = "/",title = "Select file",filetypes = (("jpeg files","*.jpg"),("all files","*.*")))
-    root.filename =  filedialog.askopenfilename()
-    print (root.filename)
-    
+    # root.filename =  filedialog.askopenfilename()
+    root.filename = filedialog.askopenfilename(initialdir=os.getcwd(), title="Select file",filetypes = (("jpeg files","*.jpg"),("all files","*.*")))
+
+    # for the while loop 
+    choice = True
+    # this makes sure a file is selcted 
+    while choice:
+        # check if the file is selected
+        if "jpg" in root.filename:
+            print("Its A Jpg file!!")
+            print (root.filename)
+            choice = None
+        else:
+            root.filename = filedialog.askopenfilename(initialdir=os.getcwd(), title="Select file",filetypes = (("jpeg files","*.jpg"),("all files","*.*")))
+   
     # this is the path if the image 
     Imgpath  = root.filename
 
@@ -88,71 +101,21 @@ def showImage():
         plt.imshow(img) 
         plt.show()
     except:
-        print("none")
+        print("No Image Found With This Name!")
 
-path = './Images/red2.jpg'
+def SaveUrlImage():
+
+    print("Please Enter the Image Url: ")
+    userInput = input()
+
+    if url
+
+    img = urlImage.urlImage(url)
+
+
+SaveUrlImage()
 saveImageTocloud()
 # showImage()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# db = mongo.MongoClient().gridfs_example
-# fs = gridfs.GridFS(db)
-
-
-# print(os.path.getsize( r'yellow.jpg' ))
-
-# # f = fs.open("hello.txt", "w")
-# fileID = fs.put( open( r'yellow.jpg', 'rb'))
-
-# out = fs.get(fileID)
-
-# print(out)
-
-
-# client = mongo.MongoClient("mongodb://localhost:27017/")
-
-# mydb = client["mydatabase"]
-# mydb = mydb["images"]
-
-
-# print(os.path.getsize( r'yellow.jpg' ))
-
-# fs = gridfs.GridFS(mydb)
-# fileID = fs.put( open( r'yellow.jpg', 'rb'))
-
-# out = fs.get(fileID)
-
-# for x in mydb.find():
-#   print(x)
-
 
 
 ### #####################################
