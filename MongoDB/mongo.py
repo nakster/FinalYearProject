@@ -112,17 +112,50 @@ def SaveUrlImage():
     check = True
     # this checks if the correct url is 
     while check:
-        #check if the string ends with 
+        #check if the string ends with .png or jpg
         # https://www.programiz.com/python-programming/methods/string/endswith
         if (url.endswith('.jpg')) or (url.endswith('.png')):
             print("The image is in the correct format")
             check = None
         else:
+            #if it doesnt end with the following then ask agian
             print("Please Enter the Image Url: ")
             url = input()
 
-
+    # convert to cv2 type 
     img = urlImage.urlImage(url)
+
+    #ask for th name
+    print("What name would you like to save the image as: ")
+    userInput = input()
+
+    try:
+        testCollection.find_one({'name': userInput})['images'][0]
+        print("Sorry Image Already Exist with Same Name!!")
+        print("Try Again")
+    except:
+        print("Searched Database Name is unique Adding to database!!")
+        # convert ndarray to string
+        imageString = img.tostring()
+
+        # store the image
+        imageID = fs.put(imageString, encoding='utf-8')
+
+        # create our image meta data
+        meta = {
+            'name': userInput,
+            'images': [
+                {
+                    'imageID': imageID,
+                    'shape': img.shape,
+                    'dtype': str(img.dtype)
+                }
+            ]
+        }
+
+        # insert the meta data
+        testCollection.insert_one(meta)
+        print("Image Added To database")
 
 
 SaveUrlImage()
