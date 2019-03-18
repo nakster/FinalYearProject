@@ -105,16 +105,28 @@ def showImage():
 
 def SaveUrlImage():
 
+    # ask the user for url
     print("Please Enter the Image Url: ")
-    userInput = input()
+    url = input()
 
-    if url
+    check = True
+    # this checks if the correct url is 
+    while check:
+        #check if the string ends with 
+        # https://www.programiz.com/python-programming/methods/string/endswith
+        if (url.endswith('.jpg')) or (url.endswith('.png')):
+            print("The image is in the correct format")
+            check = None
+        else:
+            print("Please Enter the Image Url: ")
+            url = input()
+
 
     img = urlImage.urlImage(url)
 
 
 SaveUrlImage()
-saveImageTocloud()
+# saveImageTocloud()
 # showImage()
 
 
