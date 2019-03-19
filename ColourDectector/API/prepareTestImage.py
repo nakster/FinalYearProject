@@ -34,7 +34,7 @@ def prepareImage(img):
             # print(feature_data)
 
     #here open the test.data file and right the rgb value which will be tested with the knn
-    with open('./Data/test.data', 'w') as myfile:
+    with open('ColourDectector/Data/test.data', 'w') as myfile:
         myfile.write(feature_data) 
 
 # links

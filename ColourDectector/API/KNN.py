@@ -156,7 +156,8 @@ def main(trainData, testData):
         # append the response to prediction array
         prediction.append(res)
         
-    # return the prediction    
+    # return the prediction  
+    # print(prediction[0])  
     return prediction[0]
 
 
