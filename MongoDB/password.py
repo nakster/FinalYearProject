@@ -59,47 +59,19 @@ def login():
         print("Sorry User Does Not Exists!")
         print("Try Again")
     else:
+        # ask the user for password
         print("What is your Password: ")
         password = input()
-
+        # get the password back from the database 
         # db = collection.find_one({'user': username})
         db = collection.find_one({'user': username}, {'password': 1, '_id' : 0})
-        print(db['password'])
-
+        # save the password into a new variable 
         mongoHash = db['password']
-
+        #check if the password is the same 
         if check_password(mongoHash,password):
             print('You entered the right password')
         else:
             print('I am sorry but the password does not match')
-
-# this is for the methods menu
-choice = True
-# while loop
-while choice:
-    # ask for the options 
-    print("""
-    ----- User Menu -----
-    1.Add A User
-    2.Login
-    3.Update a User
-    3.Exit/Quit
-    """)
-    choice = input("What would you like to do? ")
-
-    # if the user picks one then add a new user 
-    if choice=="1":
-        AddUser()
-    # if the user picks 2 log a new user 
-    elif choice == "2":
-        login()
-    # if the user picks 3 update the user 
-    elif choice == "3":
-        print("Update")
-    else:
-    # to get out of the while loop
-        choice = None 
-        print("Bye")
 
 # Links
 # https://www.pythoncentral.io/hashing-strings-with-python/
