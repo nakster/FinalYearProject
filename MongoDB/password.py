@@ -25,19 +25,24 @@ def check_password(hashed_password, user_password):
 
 def AddUser():
 
+    print("-----Adding a User To Database-----")
     print("What is your User Name: ")
     username = input()
+   
+    if collection.find_one({'user': username}) == None:
+        print("What is your Password: ")
+        password = input()
 
-    print("What is your Password: ")
-    password = input()
+        hashPassword = hash_password(password)
+        print(hashPassword)
 
-    hashPassword = hash_password(password)
-
-    print(hashPassword)
-
-    # insert the user and password
-    # https://stackoverflow.com/questions/31499804/insert-data-into-with-pymongo-and-flask
-    collection.insert_one({'user': username, 'password': hashPassword})
+        # insert the user and password
+        # https://stackoverflow.com/questions/31499804/insert-data-into-with-pymongo-and-flask
+        collection.insert_one({'user': username, 'password': hashPassword})
+    else:
+        print("Sorry User Already Exist with Same Name!!")
+        print("Try Again")
+    
 
 def login():
 
@@ -59,8 +64,32 @@ def login():
         print('I am sorry but the password does not match')
 
 
-# AddUser()
-login()
+
+choice = True
+
+while choice:
+    print("""
+    ----- User Menu -----
+    1.Add A User
+    2.Login
+    3.Update a User
+    3.Exit/Quit
+    """)
+    choice = input("What would you like to do? ")
+
+    if choice=="1":
+        AddUser()
+    elif choice == "2":
+        login()
+    elif choice == "3":
+        print("Update")
+    else:
+        choice = None 
+        print("Bye")
+
+
+
+
 
 # Links
 # https://www.pythoncentral.io/hashing-strings-with-python/
