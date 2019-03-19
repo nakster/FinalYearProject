@@ -70,8 +70,10 @@ def login():
         #check if the password is the same 
         if check_password(mongoHash,password):
             print('You entered the right password')
+            return True
         else:
             print('I am sorry but the password does not match')
+        
 
 # Links
 # https://www.pythoncentral.io/hashing-strings-with-python/
