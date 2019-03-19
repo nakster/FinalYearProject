@@ -1,4 +1,5 @@
 from NeuralNetworkScratch.iris import TrainIris
+from MNISTFashion.run import Test
 
 # this is when you are logged in
 def logged():
@@ -20,10 +21,9 @@ def logged():
         if logChoice == "1":
             # this here trains the neural network and prints the results 
             TrainIris()
-        elif logChoice == "1":
-
-            
-        elif logChoice == "1":
+        elif logChoice == "2":
+            Test()   
+        elif logChoice == "3":
             print("choice 3")
         else:
             logChoice = None
