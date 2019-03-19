@@ -1,30 +1,5 @@
 from MongoDB import password as p
-
-
-
-def logged():
-    logChoice = True
-
-    while logChoice:
-         # ask for the options 
-        print("""
-        ----- Neural Network Menu -----
-        1. Run The Iris Preceptron
-        2. Run The Fashion MNIST NN
-        3. Run The Coulour Detector KNN
-        4.Exit/Quit
-        """)
-        logChoice = input("What would you like to do? ")
-
-        if logChoice == "1":
-            print("choice 1")
-        elif logChoice == "1":
-            print("choice 2")
-        elif logChoice == "1":
-            print("choice 3")
-        else:
-            logChoice = None
-
+from Menu import menu
 
 # this is for the methods menu
 choice = True
@@ -48,7 +23,7 @@ while choice:
         if p.login() == True:
             print("You have Logged In!")
             # after logging in run the log menu
-            logged()      
+            menu.logged()      
     # if the user picks 3 update the user 
     elif choice == "3":
         print("Update")
