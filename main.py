@@ -159,7 +159,7 @@ while choice:
             logged()      
     # if the user picks 3 update the user 
     elif choice == "3":
-        print("Update")
+        p.updateUser()
     else:
     # to get out of the while loop
         choice = None 

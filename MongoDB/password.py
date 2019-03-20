@@ -73,7 +73,53 @@ def login():
             return True
         else:
             print('I am sorry but the password does not match')
-        
+    
+def updateUser():
+  
+    print("What is your User Name: ")
+    username = input()
+
+    # check if the user name doesnt already exists 
+    if collection.find_one({'user': username}) == None:
+        # if the user already exists then ask to add new user again
+        print("Sorry User Does Not Exists!")
+        print("Try Again")
+
+    else:
+        # ask for their name 
+        print("What is your New User Name: ")
+        newusername = input()
+
+        if collection.find_one({'user': newusername}) == None:
+
+            # if it doesnt then ask for password 
+            print("What is New your Password: ")
+            password = input()
+
+            # save the hash of the password 
+            newhashPassword = hash_password(password)
+
+
+            #get id of the user 
+            id = collection.find_one({'user': username}) 
+            userid = id['_id']
+            # insert the user and password
+            # https://stackoverflow.com/questions/31499804/insert-data-into-with-pymongo-and-flask
+            collection.update_one({
+            '_id': userid
+            },{
+            '$set':{
+                'user':newusername,
+                'password': newhashPassword
+            }
+            })
+        else:
+            # if the user already exists then ask to add new user again
+            print("Sorry User Already Exist with Same Name!!")
+            print("Try Again")
+
+      
 
 # Links
 # https://www.pythoncentral.io/hashing-strings-with-python/
+# https://stackoverflow.com/questions/13710770/how-to-update-values-using-pymongo
