@@ -64,7 +64,6 @@ np.random.seed(4)
 ##### Train  the neural network
 
 def TrainIris():
-
     # weight 1 is the matrices of weight connecting the input and the hiddenLayer
     # input layer nodes connect with hidden layer nodes
     weight1 = 2*np.random.random((inputs, hiddenLayer)) - 1
@@ -96,23 +95,30 @@ def TrainIris():
     # [1 0 0] so 1 represents the correct position of the species
     testY = np.array([targets[int(x)] for x in test.values[:,4:5]])
 
+    #layers
     l1 = 1/(1 + np.exp(-(np.dot(testX, weight1))))
     l2 = 1/(1 + np.exp(-(np.dot(l1, weight2))))
-
     np.round(l2,3)
 
-
+    #make the prediction
     yp = np.argmax(l2, axis=1) # prediction
+    # compare the prediction made and the correct specie from the test array
     res = yp == np.argmax(testY, axis=1)
+    # this is the % of correct flower species predicted 
     correct = np.sum(res)/len(res)
 
+    # change the 0,1,2 to the species 
     testres = test[['species']].replace([0,1,2], ['setosa','versicolor','virginica'])
     print(testres)
 
+    # check what the prediction is 
     testres['Prediction'] = yp
+    # change it to the corresponding specie
     testres['Prediction'] = testres['Prediction'].replace([0,1,2], ['setosa','versicolor','virginica'])
 
+    # print the correct prediction
     print(testres)
+    # and the % of corectly guessed 
     print('Correct:',sum(res),'/',len(res), ':', (correct*100),'%')
 
 
@@ -131,6 +137,7 @@ def testIris():
     print("What is the petal width? ")
     petal_width = input()
 
+    # append the user data to file for normalization
     with open('irisTest.csv', 'a', newline='') as newFile:
         newFileWriter = csv.writer(newFile)
         #epal_length  sepal_width  petal_length  petal_width
@@ -138,13 +145,10 @@ def testIris():
 
     # load Iris Flower dataset
     IrisData = pd.read_csv('irisTest.csv')
-    print(IrisData.tail(2))
-
     # Normalize the data
     data_norm = IrisData[['sepal_length', 'sepal_width', 'petal_length', 'petal_width']].apply(lambda x: (x - x.min()) / (x.max() - x.min()))
     data = data_norm.tail(1)
 
-    
     # weight 1 is the matrices of weight connecting the input and the hiddenLayer
     # input layer nodes connect with hidden layer nodes
     weight1 = 2*np.random.random((inputs, hiddenLayer)) - 1
