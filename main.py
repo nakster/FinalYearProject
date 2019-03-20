@@ -5,7 +5,30 @@ from ColourDectector import colourDetect
 import cv2
 from ColourDectector.API import urlImage
 
-def main():
+
+def choice1Menu():
+
+    choice1 = True
+   
+    while choice1:
+        print("""
+        ----- Iris Menu -----
+        1.Train Model
+        2.Test Model
+        3.Exit/Quit
+        """)
+        choice1 = input("What would you like to do? ")
+
+        if choice1=="1":
+            # this here trains the neural network and prints the results 
+            iris.TrainIris()
+        if choice1=="2":
+            iris.testIris()
+        if choice1 == "3":
+            choice1 = None
+
+
+def colourDetectMenu():
 
     #make a countinous while loop 
     choice = True
@@ -70,14 +93,15 @@ def logged():
 
         # option 1 handles the neural network made from scratch 
         if logChoice == "1":
-            # this here trains the neural network and prints the results 
-            iris.TrainIris()
+            choice1Menu()
         elif logChoice == "2":
             run.Test()   
         elif logChoice == "3":
-            main()
+            colourDetectMenu()
         else:
             logChoice = None
+
+
 
 # this is for the methods menu
 choice = True

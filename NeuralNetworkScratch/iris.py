@@ -8,6 +8,7 @@ import pandas as pd # handling data
 import matplotlib.pyplot as plt# plotting graphs 
 import seaborn as sns  # handles data visualisation
 from sklearn import preprocessing
+import csv
 
 # load Iris Flower dataset
 IrisData = pd.read_csv('https://raw.githubusercontent.com/uiuc-cse/data-fa14/gh-pages/data/iris.csv')
@@ -17,6 +18,7 @@ IrisData = pd.read_csv('https://raw.githubusercontent.com/uiuc-cse/data-fa14/gh-
 # Normalize the data
 data_norm = IrisData[['sepal_length', 'sepal_width', 'petal_length', 'petal_width']].apply(lambda x: (x - x.min()) / (x.max() - x.min()))
 # print(data_norm.sample(n=5))
+
 
 # Convert the names of the species setosa','versicolor','virginica to numerical values 
 # so it can be easily used for the neural network 
@@ -85,7 +87,7 @@ def TrainIris():
         weight1 += X.T.dot(layer1_delta) * learning_rate
     print('Error Rate for prediction is:', er)
 
-    #testX is aarray without the id and the species column
+    #testX is a array without the id and the species column
     testX = test.values[:,:4]
     # testY replaces the species position 
     # i.e if in the train data array if the specie is 1 which is setosa
@@ -112,3 +114,77 @@ def TrainIris():
 
     print(testres)
     print('Correct:',sum(res),'/',len(res), ':', (correct*100),'%')
+
+
+#https://stackoverflow.com/questions/2967194/open-in-python-does-not-create-a-file-if-it-doesnt-exist
+def testIris():
+    # ask for sepal_length', 'sepal_width', 'petal_length', 'petal_width
+    print("What is the sepal length? ")
+    sepal_length = input()
+
+    print("What is the sepal width? ")
+    sepal_width = input()
+
+    print("What is the petal length? ")
+    petal_length = input()
+
+    print("What is the petal width? ")
+    petal_width = input()
+
+    with open('irisTest.csv', 'a', newline='') as newFile:
+        newFileWriter = csv.writer(newFile)
+        #epal_length  sepal_width  petal_length  petal_width
+        newFileWriter.writerow([sepal_length, sepal_width,petal_length,petal_width,'setosa'])
+
+    # load Iris Flower dataset
+    IrisData = pd.read_csv('irisTest.csv')
+    print(IrisData.tail(2))
+
+    # Normalize the data
+    data_norm = IrisData[['sepal_length', 'sepal_width', 'petal_length', 'petal_width']].apply(lambda x: (x - x.min()) / (x.max() - x.min()))
+    data = data_norm.tail(1)
+
+    
+    # weight 1 is the matrices of weight connecting the input and the hiddenLayer
+    # input layer nodes connect with hidden layer nodes
+    weight1 = 2*np.random.random((inputs, hiddenLayer)) - 1
+
+    # make a connection between hidden layer and output i.e weights 2 do that
+    output = len(y[0]) # len is 3 
+    weight2 = 2*np.random.random((hiddenLayer, output)) - 1
+
+    # slowly update the network
+    learning_rate = 0.2 
+    for epoch in range(50000):
+        #sigmoid activation function squashes the input values between 0 and 1. 
+        #This provides a consistant way for the network to deal with outputs.
+        layer1 = 1/(1 + np.exp(-(np.dot(X, weight1)))) # sigmoid function
+        layer2 = 1/(1 + np.exp(-(np.dot(layer1, weight2))))
+        er = (abs(y - layer2)).mean()
+        layer2_delta = (y - layer2)*(layer2 * (1-layer2))
+        layer1_delta = layer2_delta.dot(weight2.T) * (layer1 * (1-layer1))
+        weight2 += layer1.T.dot(layer2_delta) * learning_rate
+        weight1 += X.T.dot(layer1_delta) * learning_rate
+    print('Error Rate for prediction is:', er)
+
+    #testX is a array without the id and the species column
+    testX = data.values[:,:4]
+
+    #layers 
+    l1 = 1/(1 + np.exp(-(np.dot(testX, weight1))))
+    l2 = 1/(1 + np.exp(-(np.dot(l1, weight2))))
+    np.round(l2,3)
+
+    # this here is the prediction
+    yp = np.argmax(l2, axis=1) # prediction
+
+    if yp == 0:
+        print("The Prediction is Setosa")
+    elif yp == 1:
+        print("The Prediction is versicolor")
+    elif yp == 2:
+        print("The Prediction is virginica")
+    else:
+        print("Try Again")
+
+    #http://beancoder.com/csv-files-using-python/
