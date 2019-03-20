@@ -5,6 +5,7 @@ from ColourDectector import colourDetect
 import cv2
 from ColourDectector.API import urlImage
 from MNISTFashion import Main
+from MongoDB import mongo as saveImgMongo
 
 def irisMenu():
 
@@ -56,8 +57,11 @@ def colourDetectMenu():
         print("""
         ----- Colour Detector Menu -----
         1.Test A Image from Image Folder
-        2.Test a Image url(must be http and jpg)
-        3.Exit/Quit
+        2.Test A Image url(must be http and jpg)
+        3.Save A Image to Database in Cloud
+        4.Search A Image from Database
+        5.Sava A URL Image To Database
+        6.Exit/Quit
         """)
         choice = input("What would you like to do? ")
 
@@ -85,9 +89,18 @@ def colourDetectMenu():
             image = urlImage.urlImage(url)
 
             colourDetect.predict(image)
+        
+        elif choice=="3":
+            saveImgMongo.saveImageTocloud()
+
+        elif choice=="4":
+            saveImgMongo.showImage()
+        
+        elif choice=="5":
+            saveImgMongo.SaveUrlImage()
             
         # this is to exit the loop
-        elif choice=="3":
+        elif choice=="6":
             print("\n Goodbye") 
             choice = None
         else:

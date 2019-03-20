@@ -7,7 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from tkinter import filedialog
 from tkinter import *
-from API import urlImage
+from MongoDB.API import urlImage
 import os
 # from .ColourDetectector.API import urlImage
 # access our image collection
@@ -156,12 +156,6 @@ def SaveUrlImage():
         # insert the meta data
         testCollection.insert_one(meta)
         print("Image Added To database")
-
-
-SaveUrlImage()
-# saveImageTocloud()
-# showImage()
-
 
 ### #####################################
 # https://stackoverflow.com/questions/53682647/mongodb-atlas-authentication-failed-on-python
