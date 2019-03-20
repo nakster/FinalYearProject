@@ -141,10 +141,11 @@ while choice:
     # ask for the options 
     print("""
     ----- User Menu -----
-    1.Add A User
-    2.Login
-    3.Update a User
-    4.Exit/Quit
+    1. Add A User
+    2. Login
+    3. Update a User
+    4. Update a User
+    5. Exit/Quit
     """)
     choice = input("What would you like to do? ")
 
@@ -160,6 +161,9 @@ while choice:
     # if the user picks 3 update the user 
     elif choice == "3":
         p.updateUser()
+    # for deleting a user 
+    elif choice == "4":
+        p.deleteUser()
     else:
     # to get out of the while loop
         choice = None 

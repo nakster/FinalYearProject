@@ -118,6 +118,22 @@ def updateUser():
             print("Sorry User Already Exist with Same Name!!")
             print("Try Again")
 
+def deleteUser():
+
+     # ask for their name 
+    print("What is New User Name YOu'd like to Delete: ")
+    username = input()
+
+    if collection.find_one({'user': username}) == None:
+        # if the user already exists then ask to add new user again
+        print("Sorry User Does Not Exists!")
+        print("Try Again")
+
+    else:
+       collection.delete_one({'user': username})
+       print("The User has been deleted!!")
+
+
       
 
 # Links
