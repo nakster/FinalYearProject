@@ -4,9 +4,9 @@ from MNISTFashion import run
 from ColourDectector import colourDetect
 import cv2
 from ColourDectector.API import urlImage
+from MNISTFashion import Main
 
-
-def choice1Menu():
+def irisMenu():
 
     choice1 = True
    
@@ -27,6 +27,24 @@ def choice1Menu():
         if choice1 == "3":
             choice1 = None
 
+def fashionMenu():
+
+    fashion = True
+    while fashion:
+        print("""
+        ----- Fashion Menu -----
+        1.Train Model
+        2.Test Model
+        3.Exit/Quit
+        """)
+        fashion = input("What would you like to do? ")
+        if fashion=="1":
+            # this here trains the neural network and prints the results 
+           Main.Train()
+        if fashion=="2":
+            run.Test()  
+        if fashion == "3":
+            fashion = None
 
 def colourDetectMenu():
 
@@ -93,9 +111,9 @@ def logged():
 
         # option 1 handles the neural network made from scratch 
         if logChoice == "1":
-            choice1Menu()
+            irisMenu()
         elif logChoice == "2":
-            run.Test()   
+           fashionMenu() 
         elif logChoice == "3":
             colourDetectMenu()
         else:
