@@ -150,3 +150,8 @@ sepal_length,sepal_width,petal_length,petal_width,species
 6.2,3.4,5.4,2.3,virginica
 5.9,3,5.1,1.8,virginica
 4.9,2.4,3.3,1,setosa
+4,5,5,0.4,setosa
+64,65,65,65,setosa
+1.1,1.1,1.1,1.1,setosa
+3.5,4.5,1.2,1.8,setosa
+4,5,6,7,setosa

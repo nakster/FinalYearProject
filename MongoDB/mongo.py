@@ -20,7 +20,6 @@ db = client.MongoProject
 testCollection = db.myImageCollection
 fs = gridfs.GridFS(db)
 
-
 def saveImageTocloud():
 
     #https://stackoverflow.com/questions/39261178/how-can-tkinter-open-with-file-directory-of-specific-folder-also-containing-py
