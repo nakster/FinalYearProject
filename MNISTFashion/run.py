@@ -2,11 +2,11 @@
 from keras.models import load_model
 model = load_model('MNISTFashion/fashionModel.h5')
 import numpy as np
-import os
+# import os
 import urllib.request
-import gzip
-import shutil
-import matplotlib.pyplot as plt
+# import gzip
+# import shutil
+# import matplotlib.pyplot as plt
 from keras.datasets import fashion_mnist
 from tkinter import filedialog
 from tkinter import *
