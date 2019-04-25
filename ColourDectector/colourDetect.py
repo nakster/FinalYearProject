@@ -45,56 +45,6 @@ def predict(image):
     plt.imshow(image[..., ::-1]) 
     plt.show()
 
-# def main():
-
-#     #make a countinous while loop 
-#     choice = True
-
-#     #ask for 
-#     while choice:
-#         print("""
-#         ----- Colour Detector Menu -----
-#         1.Test A Image from Image Folder
-#         2.Test a Image url(must be http and jpg)
-#         3.Exit/Quit
-#         """)
-#         choice = input("What would you like to do? ")
-
-#         #first choice is if we select a image from the image folder
-#         if choice=="1":
-
-#             #we going to read in the image that is going to be tested 
-#             print("Enter image (saved as colors e.g. black)")
-#             userInput = input()
-
-#              #this here reads the image in 
-#             image = cv2.imread('./Images/' + userInput + '.jpg')
-
-#             predict(image)
-            
-
-#         #this is to test the image from the url    
-#         elif choice=="2":
-
-#             #we going to read in the url that is going to be tested 
-#             print("Enter image URL")
-#             url = input()
-
-#             # send the url to the method which converts it
-#             image = urlImage.urlImage(url)
-
-#             predict(image)
-            
-#         # this is to exit the loop
-#         elif choice=="3":
-#             print("\n Goodbye") 
-#             choice = None
-#         else:
-#             print("\n Not Valid Choice Try again")
-
-#run the main method 
-# main()
-
 # links 
 # https://stackoverflow.com/questions/3388223/python-difference-between-os-access-and-os-path-exists
 # https://stackoverflow.com/questions/35286540/display-an-image-with-python
