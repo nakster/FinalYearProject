@@ -144,7 +144,7 @@ while choice:
     1. Add A User
     2. Login
     3. Update a User
-    4. Update a User
+    4. Delete a User
     5. Exit/Quit
     """)
     choice = input("What would you like to do? ")
