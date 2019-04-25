@@ -7,10 +7,10 @@ import urllib.request
 # import gzip
 # import shutil
 # import matplotlib.pyplot as plt
-from keras.datasets import fashion_mnist
 from tkinter import filedialog
 from tkinter import *
 from PIL import Image
+import os
 
 def Test():
 

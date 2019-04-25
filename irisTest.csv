@@ -156,3 +156,4 @@ sepal_length,sepal_width,petal_length,petal_width,species
 3.5,4.5,1.2,1.8,setosa
 4,5,6,7,setosa
 21,23,4,3,setosa
+5,3,1.6,0.2,setosa
