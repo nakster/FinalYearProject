@@ -1,17 +1,22 @@
 # Neural Networks in Python
 
-One Paragraph of project description goes here
+<p align="center"> 
+<img src="https://github.com/nakster/gif/blob/master/icon.PNG"/>
+</p>
+
+This project is based on machine learning using Neural Networks and written in the Python programming language. The idea for undertaking this project stems from me wanting to figure out how uniquely different neural networks function. There are various types of neural networks that I could have utilized in my project but after researching my options I chose to work with the three most widely used neural networks. The three Neural Networks I chose to work with were Multilayer perceptron, Convolutional neural network (CNN) and k-nearest Neighbours (KNN). 
+
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+To run the Python Program You need to Install the Following to your Machine
 
 ```
-Give examples
+
 ```
 
 ### Installing
@@ -21,13 +26,16 @@ A step by step series of examples that tell you how to get a development env run
 Say what the step will be
 
 ```
-Give the example
+Download the Anaconda installer from https://www.anaconda.com/distribution/#windows
+Double click the installer to launch
 ```
+
+![](https://i.imgur.com/fHS2z24.gif)
 
 And repeat
 
 ```
-until finished
+Download the Anaconda installer from 
 ```
 
 End with an example of getting some data out of the system or using it for a little demo
