@@ -46,10 +46,10 @@ pip install opencv-python
 
 Inside Your Bash/Terminal Copy And Paste This
 ```bash
-Git clone https://github.com/nakster/FashionNeuralNetwork.git
+Git clone https://github.com/nakster/FinalYearProject.git
 
 Change Into the Directory
-cd "Location\FashionNeuralNetwork"
+cd "Location\FinalYearProject\FinalYearProject"
 
 Run Python Program
 Python main.c // this will run the whole programme 
