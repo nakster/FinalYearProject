@@ -138,13 +138,13 @@ def testIris():
     petal_width = input()
 
     # append the user data to file for normalization
-    with open('irisTest.csv', 'a', newline='') as newFile:
+    with open('Resources/irisTest.csv', 'a', newline='') as newFile:
         newFileWriter = csv.writer(newFile)
         #epal_length  sepal_width  petal_length  petal_width
         newFileWriter.writerow([sepal_length, sepal_width,petal_length,petal_width,'setosa'])
 
     # load Iris Flower dataset
-    IrisData = pd.read_csv('irisTest.csv')
+    IrisData = pd.read_csv('Resources/irisTest.csv')
     # Normalize the data
     data_norm = IrisData[['sepal_length', 'sepal_width', 'petal_length', 'petal_width']].apply(lambda x: (x - x.min()) / (x.max() - x.min()))
     data = data_norm.tail(1)

@@ -11,8 +11,8 @@ def predict(image):
     # Variables
     # read the data file
     # this is the path to the data training file
-    dataPath = 'ColourDectector/Data/training.data'
-    testPath = 'ColourDectector/Data/test.data'
+    dataPath = 'KNearestNeighbors/Data/training.data'
+    testPath = 'KNearestNeighbors/Data/test.data'
     prediction = ''
     #test if the path is correct
     # print(data)

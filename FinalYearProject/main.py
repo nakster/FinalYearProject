@@ -152,7 +152,7 @@ def logged():
            fashionMenu() 
         elif logChoice == "3":
             colourDetectMenu()
-        elif  logChoice == "3":
+        elif  logChoice == "4":
             logChoice = None
         else:   
             print("\n Not Valid Choice Try again")
