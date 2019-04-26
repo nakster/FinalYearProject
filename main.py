@@ -6,6 +6,9 @@ import cv2
 from ColourDectector.API import urlImage
 from MNISTFashion import Main
 from MongoDB import mongo as saveImgMongo
+from tkinter import filedialog
+from tkinter import *
+import os
 
 def irisMenu():
 
@@ -23,10 +26,12 @@ def irisMenu():
         if choice1=="1":
             # this here trains the neural network and prints the results 
             iris.TrainIris()
-        if choice1=="2":
+        elif choice1=="2":
             iris.testIris()
-        if choice1 == "3":
+        elif choice1 == "3":
             choice1 = None
+        else: 
+            print("\n Not Valid Choice Try again")
 
 def fashionMenu():
 
@@ -42,10 +47,12 @@ def fashionMenu():
         if fashion=="1":
             # this here trains the neural network and prints the results 
            Main.Train()
-        if fashion=="2":
+        elif fashion=="2":
             run.Test()  
-        if fashion == "3":
+        elif fashion == "3":
             fashion = None
+        else: 
+            print("\n Not Valid Choice Try again")
 
 def colourDetectMenu():
 
@@ -68,14 +75,30 @@ def colourDetectMenu():
         #first choice is if we select a image from the image folder
         if choice=="1":
 
+            root = Tk()
+            # root.filename =  filedialog.askopenfilename()
+            root.filename = filedialog.askopenfilename(initialdir=os.getcwd(), title="Select file",filetypes = (("jpg files","*.jpg"),("all files","*.*")))
+
+            url = root.filename
+            # for the while loop 
+            fileChoice = True
+            # this makes sure a file is selcted 
+            while fileChoice:
+                # check if the file is selected
+                if (url.endswith('.jpg')) or (url.endswith('.png')):
+                    print (root.filename)
+                    fileChoice = None
+                else:
+                   root.filename = filedialog.askopenfilename(initialdir=os.getcwd(), title="Select file",filetypes = (("jpg files","*.jpg"),("all files","*.*")))
+
+
             #we going to read in the image that is going to be tested 
-            print("Enter image (saved as colors e.g. black)")
-            userInput = input()
+            userInput = root.filename
 
              #this here reads the image in
              # #C:\Users\naqi\Desktop\Django\ColourDectector 
-            image = cv2.imread('ColourDectector/Images/' + userInput + '.jpg')
-
+           # image = cv2.imread('ColourDectector/Images/' + userInput + '.jpg')
+            image = cv2.imread(userInput)
             colourDetect.predict(image)
             
         #this is to test the image from the url    
@@ -129,10 +152,10 @@ def logged():
            fashionMenu() 
         elif logChoice == "3":
             colourDetectMenu()
-        else:
+        elif  logChoice == "3":
             logChoice = None
-
-
+        else:   
+            print("\n Not Valid Choice Try again")
 
 # this is for the methods menu
 choice = True
@@ -164,10 +187,13 @@ while choice:
     # for deleting a user 
     elif choice == "4":
         p.deleteUser()
-    else:
-    # to get out of the while loop
+    elif choice == "5":
+         # to get out of the while loop
         choice = None 
         print("Bye")
+    else:
+        print("\n Not Valid Choice Try again")
+        
 
 
 
