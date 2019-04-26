@@ -46,10 +46,10 @@ After login you cas use between the 3 different types of neural networks
 
 ## Technologies Used
 
-* Procedural Programming
-* Google Cloud
-* GitHub
-* Openssl 
+* Python
+* MongoDB
+* Python Libraries i.e. Numpy, panda 
+* Keras
 
 ## Authors
 
