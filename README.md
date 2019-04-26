@@ -60,7 +60,7 @@ After login you cas use between the 3 different types of neural networks
 ```
 
 <p align="center"> 
-<img src="https://i.imgur.com/H0ZfIVN.gif"/>
+<img src="https://i.imgur.com/aUY6JI2.gif"/>
 </p>
 
 ### Demonstration
