@@ -73,9 +73,9 @@ I have provided a demonstration of my project. I was not able to show all the fe
 
 #### Main Feature 
 - 3 Neural Netwroks 
-   * Perceptron
-   * Convolutional Neural Network
-   * k-Nearest Neighbors
+   * Iris Perceptron
+   * Fashion MNIST Convolutional Neural Network
+   * Colour Detector k-Nearest Neighbors
    
 - MongoDB User Login System 
 - Able to add images to the MongoDB Database
