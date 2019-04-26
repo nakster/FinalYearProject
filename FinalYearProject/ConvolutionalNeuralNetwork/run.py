@@ -1,6 +1,6 @@
 # Importing the Keras libraries and packages
 from keras.models import load_model
-model = load_model('MNISTFashion/fashionModel.h5')
+model = load_model('Resources/CNNModel/fashionModel.h5')
 import numpy as np
 # import os
 import urllib.request
@@ -43,7 +43,12 @@ def Test():
 
     # Predicting the Test set results
     pred = model.predict(im2arr)
-    correct_indices = np.nonzero(pred)
+    print(pred)
+    correct_indices = np.nonzero(pred > 0.1)
+    
+    #print("The program predicts image number to be:", correct_indices[-1])
+    #print(pred.index(max(pred))
+    #print(correct_indices)
 
     # from the prediction array print the result 
     if correct_indices[-1] == 0:

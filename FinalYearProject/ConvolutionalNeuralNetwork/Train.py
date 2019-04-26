@@ -73,7 +73,7 @@ def Train():
     model.fit(x_train,y_train, batch_size=64, epochs=10,validation_data=(x_test, y_test))
 
     # Save the model to use test the pictures for later
-    model.save('fashionModel.h5')
+    model.save('Resources/CNNModel/fashionModel.h5')
 
     # Evaluate the model on test set
     score = model.evaluate(x_test, y_test, verbose=0)

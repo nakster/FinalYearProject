@@ -1,10 +1,10 @@
 from MongoDB import password as p
-from NeuralNetworkScratch import iris
-from MNISTFashion import run
-from ColourDectector import colourDetect
+from Perceptron import iris
+from ConvolutionalNeuralNetwork import run
+from KNearestNeighbors import colourDetect
 import cv2
-from ColourDectector.API import urlImage
-from MNISTFashion import Main
+from KNearestNeighbors.API import urlImage
+from ConvolutionalNeuralNetwork import Train
 from MongoDB import mongo as saveImgMongo
 from tkinter import filedialog
 from tkinter import *
@@ -46,7 +46,7 @@ def fashionMenu():
         fashion = input("What would you like to do? ")
         if fashion=="1":
             # this here trains the neural network and prints the results 
-           Main.Train()
+           Train.Train()
         elif fashion=="2":
             run.Test()  
         elif fashion == "3":
