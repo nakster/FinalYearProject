@@ -23,6 +23,25 @@ Double click the installer to launch
 <img src="https://i.imgur.com/fHS2z24.gif"/>
 </p>
 
+We also need to install few Python Modules that do not come pre-installed. These can be installed using PIP.
+
+```
+pymongo
+pip install pymongo
+
+dnspython
+pip install dnspython
+
+keras
+pip install keras
+
+tensorflow
+pip install tensorflow
+
+opencv
+pip install opencv-python
+```
+
 ### Installing
 
 Inside Your Bash/Terminal Copy And Paste This
