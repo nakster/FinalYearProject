@@ -71,13 +71,14 @@ After login you can use between the 3 different types of neural networks
 
 I have provided a demonstration of my project. I was not able to show all the features of my project due to time constraints on the video. 
 
-#### Main Feature 
+#### Main Features 
 - 3 Neural Netwroks 
-   * Perceptron
-   * Convolutional Neural Network
-   * k-Nearest Neighbors
+   * Iris Perceptron
+   * Fashion MNIST Convolutional Neural Network
+   * Colour Detector k-Nearest Neighbors
    
 - MongoDB User Login System 
+- Can test the Neural Network with URL images
 - Able to add images to the MongoDB Database
 
 ## Technologies Used
