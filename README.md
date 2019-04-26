@@ -56,7 +56,7 @@ Python main.c // this will run the whole programme
 
 Sign-up/login 
 
-After login you cas use between the 3 different types of neural networks 
+After login you can use between the 3 different types of neural networks 
 ```
 
 <p align="center"> 
@@ -76,8 +76,9 @@ I have provided a demonstration of my project. I was not able to show all the fe
    * Perceptron
    * Convolutional Neural Network
    * k-Nearest Neighbors
+   
 - MongoDB User Login System 
-
+- Able to add images to the MongoDB Database
 
 ## Technologies Used
 
