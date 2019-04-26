@@ -67,6 +67,18 @@ After login you cas use between the 3 different types of neural networks
 
 [![Watch the video](https://bestgifs.makeagif.com/wp-content/uploads/2016/05/gif-from-youtube.gif)](https://youtu.be/Maq_3_1Qce4)
 
+### Features
+
+I have provided a demonstration of my project. I was not able to show all the features of my project due to time constraints on the video. 
+
+#### Main Feature 
+- 3 Neural Netwroks 
+   * Perceptron
+   * Convolutional Neural Network
+   * k-Nearest Neighbors
+- MongoDB User Login System 
+
+
 ## Technologies Used
 
 * Python
