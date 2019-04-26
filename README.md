@@ -46,26 +46,39 @@ pip install opencv-python
 
 Inside Your Bash/Terminal Copy And Paste This
 ```bash
-Git clone https://github.com/nakster/FashionNeuralNetwork.git
+Git clone https://github.com/nakster/FinalYearProject.git
 
 Change Into the Directory
-cd "Location\FashionNeuralNetwork"
+cd "Location\FinalYearProject\FinalYearProject"
 
 Run Python Program
 Python main.c // this will run the whole programme 
 
 Sign-up/login 
 
-After login you cas use between the 3 different types of neural networks 
+After login you can use between the 3 different types of neural networks 
 ```
 
 <p align="center"> 
-<img src="https://i.imgur.com/H0ZfIVN.gif"/>
+<img src="https://i.imgur.com/aUY6JI2.gif"/>
 </p>
 
 ### Demonstration
 
 [![Watch the video](https://bestgifs.makeagif.com/wp-content/uploads/2016/05/gif-from-youtube.gif)](https://youtu.be/Maq_3_1Qce4)
+
+### Features
+
+I have provided a demonstration of my project. I was not able to show all the features of my project due to time constraints on the video. 
+
+#### Main Feature 
+- 3 Neural Netwroks 
+   * Perceptron
+   * Convolutional Neural Network
+   * k-Nearest Neighbors
+   
+- MongoDB User Login System 
+- Able to add images to the MongoDB Database
 
 ## Technologies Used
 
