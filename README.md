@@ -16,80 +16,49 @@ These instructions will get you a copy of the project up and running on your loc
 To run the Python Program You need to Install the Following to your Machine
 
 ```
-
-```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
 Download the Anaconda installer from https://www.anaconda.com/distribution/#windows
 Double click the installer to launch
 ```
+<p align="center"> 
+<img src="https://i.imgur.com/fHS2z24.gif"/>
+</p>
 
-![](https://i.imgur.com/fHS2z24.gif)
+### Installing
 
-And repeat
+Inside Your Bash/Terminal Copy And Paste This
+```bash
+Git clone https://github.com/nakster/FashionNeuralNetwork.git
 
-```
-Download the Anaconda installer from 
-```
+Change Into the Directory
+cd "Location\FashionNeuralNetwork"
 
-End with an example of getting some data out of the system or using it for a little demo
+Run Python Program
+Python main.c // this will run the whole programme 
 
-## Running the tests
+Sign-up/login 
 
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
+After login you cas use between the 3 different types of neural networks 
 ```
 
-### And coding style tests
+<p align="center"> 
+<img src="https://i.imgur.com/H0ZfIVN.gif"/>
+</p>
 
-Explain what these tests test and why
+## Technologies Used
 
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+* Procedural Programming
+* Google Cloud
+* GitHub
+* Openssl 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **Naqi Ahmad**
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Gerard Harrison 
